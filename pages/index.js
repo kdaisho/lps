@@ -19,6 +19,7 @@ const Main = () => {
         <Link href='/'>
           <a>Main</a>
         </Link>
+        <br />
         <Link href='/book'>
           <a>Book</a>
         </Link>

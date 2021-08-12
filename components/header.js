@@ -5,7 +5,7 @@ import styles from 'styles/Header.module.scss'
 const Header = () => {
   return (
     <header className={styles.header}>
-      <h1>Last Person Standing</h1>
+      <h1>Last Person Standing V2</h1>
     </header>
   )
 }
