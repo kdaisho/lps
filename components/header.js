@@ -7,10 +7,11 @@ const Header = () => {
   return (
     <header className={styles.header}>
       <Image
+        className='logo'
         src='/lps-logo.png'
         alt='standing cowboy cat'
-        width='128'
-        height='128'
+        width='150'
+        height='150'
       />
       <h1>Last Person Standing V2</h1>
     </header>
