@@ -14,3 +14,7 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.inner-padding {
+  padding: 1rem 2rem;
+}
