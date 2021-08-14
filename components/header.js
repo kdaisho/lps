@@ -12,7 +12,7 @@ const Header = () => {
         width='150'
         height='150'
       />
-      <h1>Last Person Standing V3</h1>
+      <h1>Last Person Standing</h1>
     </header>
   )
 }
