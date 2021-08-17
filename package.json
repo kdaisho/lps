@@ -9,6 +9,9 @@
     "start": "next start",
     "lint": "next lint"
   },
+  "pre-commit": [
+    "lint"
+  ],
   "dependencies": {
     "evergreen-ui": "^6.4.0",
     "next": "11.1.0",
