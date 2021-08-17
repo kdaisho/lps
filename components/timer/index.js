@@ -1,15 +1,9 @@
-import React, { useEffect, useState } from 'react'
 import { Button } from 'evergreen-ui'
+import React from 'react'
 import { handleTimer } from './utils'
 import styles from 'styles/Timer.module.scss'
 
-const Timer = ({ setSeconds }) => {
-  const [timerId, setTimerId] = useState(0)
-
-  useEffect(() => {
-    console.log({ timerId })
-  }, [timerId])
-
+const Timer = ({ setSeconds, timerId, setTimerId }) => {
   const getPayload = type => ({
     setSeconds,
     setTimerId,
@@ -22,8 +16,11 @@ const Timer = ({ setSeconds }) => {
       <Button size='large' onClick={() => handleTimer(getPayload('start'))}>
         Start
       </Button>
-      <Button size='large' onClick={() => handleTimer(getPayload('stop'))}>
-        Stop
+      <Button size='large' onClick={() => handleTimer(getPayload('pause'))}>
+        Pause
+      </Button>
+      <Button size='large' onClick={() => handleTimer(getPayload('reset'))}>
+        Reset
       </Button>
     </div>
   )

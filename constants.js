@@ -1,3 +1,4 @@
 const ONE_SECOND = 1000
+const HOUR_SECONDS = 3600
 
-export { ONE_SECOND }
+export { ONE_SECOND, HOUR_SECONDS }

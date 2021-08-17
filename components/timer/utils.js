@@ -10,8 +10,12 @@ const handleTimer = ({ setSeconds, setTimerId, timerId, type }) => {
       const id = setInterval(() => updateTime(setSeconds), ONE_SECOND)
       setTimerId(id)
       break
-    case type === 'stop':
+    case type === 'pause':
       clearInterval(timerId)
+      break
+    case type === 'reset':
+      clearInterval(timerId)
+      setSeconds(0)
       break
     default:
       console.log('No action')
