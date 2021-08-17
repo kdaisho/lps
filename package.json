@@ -7,11 +7,10 @@
     "build:aws": "next build && next export",
     "build:vercel": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "prepare": "husky install",
+    "pre-commit": "npm run lint"
   },
-  "pre-commit": [
-    "lint"
-  ],
   "dependencies": {
     "evergreen-ui": "^6.4.0",
     "next": "11.1.0",
@@ -22,6 +21,7 @@
   },
   "devDependencies": {
     "eslint": "7.32.0",
-    "eslint-config-next": "11.1.0"
+    "eslint-config-next": "11.1.0",
+    "husky": "^7.0.1"
   }
 }

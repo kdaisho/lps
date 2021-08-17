@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from 'react'
-import { HOUR_SECONDS, ONE_SECOND } from 'constants'
 import { getHours, getMinutes, getSeconds } from 'components/timerDisplay/utils'
+import React from 'react'
 import styles from 'styles/Timer.module.scss'
 
 const TimerDisplay = ({ seconds, timerId }) => {
