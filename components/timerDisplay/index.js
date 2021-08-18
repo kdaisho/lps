@@ -2,7 +2,7 @@ import { getHours, getMinutes, getSeconds } from 'components/timerDisplay/utils'
 import React from 'react'
 import styles from 'styles/Timer.module.scss'
 
-const TimerDisplay = ({ seconds, timerId }) => {
+const TimerDisplay = ({ standSeconds, seconds, timerId }) => {
   const getTime = seconds => {
     return {
       h: getHours(seconds, timerId),
