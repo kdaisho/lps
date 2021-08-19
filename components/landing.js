@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import Timer from 'components/timer'
+import Buttons from 'components/buttons'
 import TimerDisplay from 'components/timerDisplay'
 import styles from 'styles/Landing.module.scss'
 
@@ -26,7 +26,7 @@ const Landing = () => {
 
   return (
     <div className={styles.container}>
-      <Timer
+      <Buttons
         setStandSeconds={setStandSeconds}
         setSeconds={setSeconds}
         standSeconds={standSeconds}

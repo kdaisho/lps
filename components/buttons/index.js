@@ -1,9 +1,9 @@
 import { Button } from 'evergreen-ui'
 import React from 'react'
 import { handleTimer } from './utils'
-import styles from 'styles/Timer.module.scss'
+import styles from 'styles/Buttons.module.scss'
 
-const Timer = ({
+const Buttons = ({
   setStandSeconds,
   setSeconds,
   setStandTimerId,
@@ -54,4 +54,4 @@ const Timer = ({
   )
 }
 
-export default Timer
+export default Buttons
