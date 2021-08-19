@@ -1,18 +1,15 @@
-import Container from 'components/container'
 import Head from 'components/head'
 import Header from 'components/header'
-import Landing from 'components/landing'
+import Main from 'components/main'
 
-const Main = () => {
+const App = () => {
   return (
     <>
       <Head />
       <Header />
-      <Container>
-        <Landing />
-      </Container>
+      <Main />
     </>
   )
 }
 
-export default Main
+export default App

@@ -1,4 +1,4 @@
-import { ONE_SECOND } from 'constants'
+import { CURRENT, ONE_SECOND } from 'components/constants'
 
 const updateTime = setter => {
   setter(sec => sec + 1)
@@ -6,42 +6,39 @@ const updateTime = setter => {
 
 const handleTimer = ({
   setStandSeconds,
-  setSeconds,
+  setSitSeconds,
   setTimerId,
   timerId,
   setStandTimerId,
   standTimerId,
   type,
 }) => {
-  console.log('===== type', type)
   switch (true) {
-    case type === 'stand': {
+    case type === CURRENT.STAND: {
       const id = setInterval(() => updateTime(setStandSeconds), ONE_SECOND)
       setStandTimerId(id)
       break
     }
-    case type === 'sit': {
-      const id = setInterval(() => updateTime(setSeconds), ONE_SECOND)
+    case type === CURRENT.SIT: {
+      const id = setInterval(() => updateTime(setSitSeconds), ONE_SECOND)
       setTimerId(id)
       break
     }
-    case type === 'pause': {
-      console.log('stand timer id: sit', timerId)
-      console.log('stand timer id: stand', standTimerId)
+    case type === CURRENT.PAUSE: {
       clearInterval(timerId)
       clearInterval(standTimerId)
       break
     }
-    case type === 'reset': {
+    case type === CURRENT.RESET: {
       clearInterval(timerId)
       clearInterval(standTimerId)
-      setSeconds(0)
+      setSitSeconds(0)
       setStandSeconds(0)
       break
     }
     default:
-      console.log('No action')
+      console.log('No action found')
   }
 }
 
-export { handleTimer }
+export default handleTimer

@@ -1,20 +1,22 @@
+import React, { useEffect } from 'react'
 import { Button } from 'evergreen-ui'
-import React from 'react'
-import { handleTimer } from './utils'
+import { CURRENT } from 'components/constants'
+import handleTimer from './utils'
 import styles from 'styles/Buttons.module.scss'
 
 const Buttons = ({
   setStandSeconds,
-  setSeconds,
+  setSitSeconds,
   setStandTimerId,
   standTimerId,
   timerId,
   setTimerId,
   setCurrent,
+  current,
 }) => {
   const getPayload = type => ({
     setStandSeconds,
-    setSeconds,
+    setSitSeconds,
     setStandTimerId,
     standTimerId,
     setTimerId,
@@ -22,14 +24,19 @@ const Buttons = ({
     type,
   })
 
+  useEffect(() => {
+    if (current) {
+      handleTimer(getPayload(current))
+    }
+  }, [current])
+
   return (
     <div className={styles.container}>
       <Button
         size='large'
         onClick={() => {
-          setCurrent('stand')
+          setCurrent(CURRENT.STAND)
           clearInterval(timerId)
-          handleTimer(getPayload('stand'))
         }}
       >
         Stand
@@ -37,9 +44,8 @@ const Buttons = ({
       <Button
         size='large'
         onClick={() => {
-          setCurrent('sit')
+          setCurrent(CURRENT.SIT)
           clearInterval(standTimerId)
-          handleTimer(getPayload('sit'))
         }}
       >
         Sit

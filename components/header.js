@@ -1,4 +1,3 @@
-import { Button, Pane, Text, majorScale } from 'evergreen-ui'
 import React from 'react'
 import styles from 'styles/Header.module.scss'
 
