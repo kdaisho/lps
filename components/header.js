@@ -1,6 +1,6 @@
 import { header, inner, left, right, text } from 'styles/Header.module.scss'
-import HeadDisplay from 'components/headDisplay'
 import React from 'react'
+import TopDisplay from 'components/topDisplay'
 import cn from 'classnames'
 
 const Header = () => {
@@ -20,7 +20,7 @@ const Header = () => {
             <p>The most loved standing desk timer</p>
           </div>
         </div>
-        <HeadDisplay right={right} />
+        <TopDisplay right={right} />
       </div>
     </header>
   )

@@ -1,10 +1,10 @@
-import { container, timer } from 'styles/HeadDisplay.module.scss'
+import { container, timer } from 'styles/TopDisplay.module.scss'
 import React from 'react'
 import TimerDisplay from 'components/timerDisplay'
 import cn from 'classnames'
 import { useTimerContext } from 'components/timerContext'
 
-const HeadDisplay = ({ right }) => {
+const TopDisplay = ({ right }) => {
   const { sitTime, standTime } = useTimerContext()
 
   return (
@@ -21,4 +21,4 @@ const HeadDisplay = ({ right }) => {
   )
 }
 
-export default HeadDisplay
+export default TopDisplay
