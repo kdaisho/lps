@@ -30,3 +30,9 @@ a {
 .inner-padding {
   padding: 1rem 2rem;
 }
+
+.wrapper {
+  margin: 0 auto;
+  max-width: 1920px;
+  width: 100%;
+}

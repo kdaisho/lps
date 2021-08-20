@@ -50,10 +50,10 @@ const Buttons = ({
       >
         Sit
       </Button>
-      <Button size='large' onClick={() => handleTimer(getPayload('pause'))}>
+      <Button size='large' onClick={() => setCurrent(CURRENT.PAUSE)}>
         Pause
       </Button>
-      <Button size='large' onClick={() => handleTimer(getPayload('reset'))}>
+      <Button size='large' onClick={() => setCurrent(CURRENT.RESET)}>
         Reset
       </Button>
     </div>
