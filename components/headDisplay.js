@@ -10,11 +10,11 @@ const HeadDisplay = ({ right }) => {
   return (
     <div className={cn(container, right, 'inner-padding')}>
       <div className={timer}>
-        <h2 title='stand'>🧍</h2>
+        <h2 title='standing'>🧍</h2>
         <TimerDisplay seconds={standTime} />
       </div>
       <div className={timer}>
-        <h2 title='sit'>🪑</h2>
+        <h2 title='sitting'>🪑</h2>
         <TimerDisplay seconds={sitTime} />
       </div>
     </div>
