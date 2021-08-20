@@ -2,9 +2,18 @@
   background: rgb(147, 221, 240);
   align-items: center;
   display: flex;
-  height: 160px;
   justify-content: flex-start;
-  max-width: 1500px;
   padding: 0 3rem;
   width: 100%;
+
+  .inner {
+    align-items: center;
+    display: flex;
+    height: 100%;
+    justify-content: flex-start;
+    margin: 0 auto;
+    max-width: 1920px;
+    padding: 0.25rem 0;
+    width: 100%;
+  }
 }

@@ -1,8 +1,9 @@
 import { HOUR_SECONDS } from 'components/constants'
 
-export const getHours = (seconds, timerId) => {
+export const getHours = (seconds, sitTimerId, standTimerId) => {
   if (seconds / HOUR_SECONDS >= 24) {
-    clearInterval(timerId)
+    clearInterval(sitTimerId)
+    clearInterval(standTimerId)
     return '0'.padStart(2, '0')
   }
   if (seconds / HOUR_SECONDS >= 1) {

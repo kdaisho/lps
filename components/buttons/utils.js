@@ -5,35 +5,35 @@ const updateTime = setter => {
 }
 
 const handleTimer = ({
-  setStandSeconds,
-  setSitSeconds,
-  setTimerId,
-  timerId,
+  setStandTime,
+  setSitTime,
+  setSitTimerId,
+  sitTimerId,
   setStandTimerId,
   standTimerId,
   type,
 }) => {
   switch (true) {
     case type === CURRENT.STAND: {
-      const id = setInterval(() => updateTime(setStandSeconds), ONE_SECOND)
+      const id = setInterval(() => updateTime(setStandTime), ONE_SECOND)
       setStandTimerId(id)
       break
     }
     case type === CURRENT.SIT: {
-      const id = setInterval(() => updateTime(setSitSeconds), ONE_SECOND)
-      setTimerId(id)
+      const id = setInterval(() => updateTime(setSitTime), ONE_SECOND)
+      setSitTimerId(id)
       break
     }
     case type === CURRENT.PAUSE: {
-      clearInterval(timerId)
+      clearInterval(sitTimerId)
       clearInterval(standTimerId)
       break
     }
     case type === CURRENT.RESET: {
-      clearInterval(timerId)
+      clearInterval(sitTimerId)
       clearInterval(standTimerId)
-      setSitSeconds(0)
-      setStandSeconds(0)
+      setSitTime(0)
+      setStandTime(0)
       break
     }
     default:

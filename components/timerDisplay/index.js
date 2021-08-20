@@ -1,11 +1,14 @@
 import { getHours, getMinutes, getSeconds } from 'components/timerDisplay/utils'
 import React from 'react'
 import styles from 'styles/TimerDisplay.module.scss'
+import { useTimerContext } from 'components/timerContext'
 
-const TimerDisplay = ({ seconds, timerId }) => {
+const TimerDisplay = ({ seconds }) => {
+  const { sitTimerId, standTimerId } = useTimerContext()
+
   const getTime = seconds => {
     return {
-      h: getHours(seconds, timerId),
+      h: getHours(seconds, sitTimerId, standTimerId),
       m: getMinutes(seconds),
       s: getSeconds(seconds),
     }

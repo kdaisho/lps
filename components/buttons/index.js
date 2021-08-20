@@ -3,24 +3,27 @@ import { Button } from 'evergreen-ui'
 import { CURRENT } from 'components/constants'
 import handleTimer from './utils'
 import styles from 'styles/Buttons.module.scss'
+import { useTimerContext } from 'components/timerContext'
 
-const Buttons = ({
-  setStandSeconds,
-  setSitSeconds,
-  setStandTimerId,
-  standTimerId,
-  timerId,
-  setTimerId,
-  setCurrent,
-  current,
-}) => {
-  const getPayload = type => ({
-    setStandSeconds,
-    setSitSeconds,
-    setStandTimerId,
+const Buttons = () => {
+  const {
+    sitTimerId,
     standTimerId,
-    setTimerId,
-    timerId,
+    current,
+    setSitTime,
+    setStandTime,
+    setSitTimerId,
+    setStandTimerId,
+    setCurrent,
+  } = useTimerContext()
+
+  const getPayload = type => ({
+    sitTimerId,
+    standTimerId,
+    setSitTime,
+    setStandTime,
+    setSitTimerId,
+    setStandTimerId,
     type,
   })
 
@@ -36,7 +39,7 @@ const Buttons = ({
         size='large'
         onClick={() => {
           setCurrent(CURRENT.STAND)
-          clearInterval(timerId)
+          clearInterval(sitTimerId)
         }}
       >
         Stand
