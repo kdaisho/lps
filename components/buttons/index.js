@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react'
-import { Button } from 'evergreen-ui'
+import { button, buttons, isPause, isReset } from 'styles/Buttons.module.scss'
 import { CURRENT } from 'components/constants'
+import cn from 'classnames'
 import handleTimer from './utils'
-import styles from 'styles/Buttons.module.scss'
 import { useTimerContext } from 'components/timerContext'
 
 const Buttons = () => {
@@ -34,31 +34,45 @@ const Buttons = () => {
   }, [current])
 
   return (
-    <div className={styles.container}>
-      <Button
-        size='large'
-        onClick={() => {
-          setCurrent(CURRENT.STAND)
-          clearInterval(sitTimerId)
-        }}
-      >
-        Stand
-      </Button>
-      <Button
-        size='large'
-        onClick={() => {
-          setCurrent(CURRENT.SIT)
-          clearInterval(standTimerId)
-        }}
-      >
-        Sit
-      </Button>
-      <Button size='large' onClick={() => setCurrent(CURRENT.PAUSE)}>
-        Pause
-      </Button>
-      <Button size='large' onClick={() => setCurrent(CURRENT.RESET)}>
-        Reset
-      </Button>
+    <div className={buttons}>
+      <div>
+        <button
+          className={button}
+          size='large'
+          onClick={() => {
+            setCurrent(CURRENT.STAND)
+            clearInterval(sitTimerId)
+          }}
+        >
+          Stand
+        </button>
+        <button
+          className={button}
+          size='large'
+          onClick={() => {
+            setCurrent(CURRENT.SIT)
+            clearInterval(standTimerId)
+          }}
+        >
+          Sit
+        </button>
+      </div>
+      <div>
+        <button
+          className={cn(button, isPause)}
+          size='large'
+          onClick={() => setCurrent(CURRENT.PAUSE)}
+        >
+          Pause
+        </button>
+        <button
+          className={cn(button, isReset)}
+          size='large'
+          onClick={() => setCurrent(CURRENT.RESET)}
+        >
+          Reset
+        </button>
+      </div>
     </div>
   )
 }

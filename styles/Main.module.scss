@@ -1,8 +1,34 @@
 .container {
+  background: #292929;
   display: flex;
-  justify-content: space-between;
+  height: calc(100vh - 204px);
+  justify-content: center;
 
   .mainContents {
     padding: 1.5rem 2rem;
+    width: 100%;
+
+    background: url('https://lps-images.s3.amazonaws.com/lps-logo.png')
+      no-repeat 100% 100%;
+    background-size: 120px;
+  }
+
+  .mainTimer {
+    color: #fff;
+    font-size: 6rem;
+    text-align: center;
+
+    @media (max-width: 767px) {
+      font-size: 4rem;
+    }
+  }
+
+  .state {
+    color: #fff;
+    font-family: 'Courier New', monospace;
+    font-size: 2rem;
+    margin: 1rem 0 2rem 0;
+    text-align: center;
+    text-transform: uppercase;
   }
 }

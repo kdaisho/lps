@@ -1,2 +1,80 @@
-.container {
+.buttons {
+  margin-top: 3rem;
+  display: flex;
+  justify-content: center;
+
+  @media (max-width: 767px) {
+    display: block;
+  }
+
+  div {
+    margin: 2rem 0;
+
+    &:nth-child(1) {
+      .button {
+        &:first-child {
+          border-radius: 12px 0 0 12px;
+          margin-right: 2px;
+        }
+        &:nth-child(2) {
+          margin-right: 2px;
+
+          @media (max-width: 767px) {
+            border-radius: 0 12px 12px 0;
+            margin-right: 0;
+          }
+        }
+      }
+    }
+
+    &:nth-child(2) {
+      .button {
+        &:last-child {
+          border-radius: 0 12px 12px 0;
+          margin-right: 2px;
+        }
+
+        @media (max-width: 767px) {
+          &:first-child {
+            border-radius: 12px 0 0 12px;
+            margin-right: 2px;
+          }
+          border-radius: 0 12px 12px 0;
+          margin-right: 0;
+        }
+      }
+    }
+  }
+
+  .button {
+    border: none;
+    background: #ffe92b;
+    font-size: 2rem;
+    height: 90px;
+    width: 220px;
+
+    @media (max-width: 1024px) {
+      font-size: 1.75rem;
+      height: 70px;
+      width: 170px;
+    }
+
+    @media (max-width: 767px) {
+      width: 48%;
+    }
+
+    &:hover {
+      cursor: pointer;
+      opacity: 0.9;
+    }
+  }
+
+  .isPause {
+    color: #d32f2f;
+  }
+
+  .isReset {
+    background: #d32f2f;
+    color: #fff;
+  }
 }

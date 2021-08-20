@@ -1,6 +1,6 @@
-import { header, inner, left, right } from 'styles/Header.module.scss'
+import { header, inner, left, right, text } from 'styles/Header.module.scss'
+import HeadDisplay from 'components/headDisplay'
 import React from 'react'
-import Sidebar from 'components/sidebar'
 import cn from 'classnames'
 
 const Header = () => {
@@ -15,9 +15,12 @@ const Header = () => {
             width='175'
             height='175'
           />
-          <h1>Last Person Standing</h1>
+          <div className={text}>
+            <h1>Last Person Standing</h1>
+            <p>The most loved standing desk timer</p>
+          </div>
         </div>
-        <Sidebar className={right} />
+        <HeadDisplay right={right} />
       </div>
     </header>
   )

@@ -1,5 +1,5 @@
 .header {
-  background: rgb(147, 221, 240);
+  background: #ffe92b;
   padding: 0 3rem;
   width: 100%;
 
@@ -11,13 +11,38 @@
     max-width: 1920px;
     padding: 0.25rem 0;
     width: 100%;
+
+    @media (max-width: 767px) {
+      display: block;
+    }
   }
 
   .left {
     align-items: center;
     display: flex;
     justify-content: flex-start;
+
+    .text {
+      h1 {
+        font-size: 2.5rem;
+        line-height: 1;
+      }
+
+      p {
+        font-size: 1.5rem;
+        padding-top: 0.5rem;
+
+        @media (max-width: 1024px) {
+          display: none;
+        }
+      }
+    }
   }
+
+  .left,
   .right {
+    @media (max-width: 767px) {
+      justify-content: center;
+    }
   }
 }
