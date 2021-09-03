@@ -5,11 +5,8 @@ const updateTime = setter => {
 }
 
 const setTotalSeconds = (start, setter, standGap) => {
-  console.log('=== standGap', standGap)
-  const totalSeconds = Math.floor((Date.now() - (start - standGap)) / 1000)
-  // const totalSeconds = (Date.now() - start) / 1000
-  console.log('time', totalSeconds)
-  setter(totalSeconds)
+  const totalSeconds = Math.floor((Date.now() - start) / 1000)
+  setter(totalSeconds + standGap)
 }
 
 const handleTimer = ({
@@ -29,7 +26,6 @@ const handleTimer = ({
         () => setTotalSeconds(startTime, setStandTime, standGap),
         ONE_SECOND
       )
-      // const id = setInterval(() => updateTime(setStandTime), ONE_SECOND)
       setStandTimerId(id)
       break
     }

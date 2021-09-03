@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { button, buttons, isPause, isReset } from 'styles/Buttons.module.scss'
 import { CURRENT } from 'components/constants'
 import cn from 'classnames'
@@ -6,7 +6,6 @@ import handleTimer from './utils'
 import { useTimerContext } from 'components/timerContext'
 
 const Buttons = () => {
-  const [startTime, setStartTime] = useState(0)
   const {
     sitTimerId,
     standTimerId,
@@ -19,31 +18,32 @@ const Buttons = () => {
     setCurrent,
     standGap,
     setStandGap,
+    startTime,
+    setStartTime,
   } = useTimerContext()
 
-  const getPayload = type => ({
-    sitTimerId,
-    standTimerId,
-    setSitTime,
-    setStandTime,
-    setSitTimerId,
-    setStandTimerId,
-    type,
-    startTime,
-    standGap,
-    setStandGap,
-  })
-
   useEffect(() => {
+    const getPayload = type => ({
+      sitTimerId,
+      standTimerId,
+      setSitTime,
+      setStandTime,
+      setSitTimerId,
+      setStandTimerId,
+      type,
+      startTime,
+      standGap,
+      setStandGap,
+    })
     if (current) {
-      setStartTime(Date.now())
-      if (current === CURRENT.STAND) {
-        console.log('=== setting gap for stand', current, standTime)
-        setStandGap(standTime)
-      }
       handleTimer(getPayload(current))
     }
-  }, [current])
+  }, [startTime])
+
+  useEffect(() => {
+    setStartTime(Date.now())
+    setStandGap(standTime)
+  }, [current, setStandGap])
 
   return (
     <div className={buttons}>
