@@ -10,6 +10,7 @@ const TimerWrapper = ({ children }) => {
   const [sitTimerId, setSitTimerId] = useState(0)
   const [standTimerId, setStandTimerId] = useState(0)
   const [current, setCurrent] = useState('')
+  const [standGap, setStandGap] = useState(0)
 
   const time = {
     sitTime,
@@ -22,6 +23,8 @@ const TimerWrapper = ({ children }) => {
     setSitTimerId,
     setStandTimerId,
     setCurrent,
+    standGap,
+    setStandGap,
   }
 
   return <TimerContext.Provider value={time}>{children}</TimerContext.Provider>
