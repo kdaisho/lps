@@ -1,15 +1,16 @@
-import { HOUR_SECONDS } from 'components/constants'
+import { HOUR_SECONDS, STRING_ZERO } from 'components/constants'
 import { clearIntervals } from 'components/utils'
 
 export const getHours = (seconds, timerId) => {
   if (seconds / HOUR_SECONDS >= 24) {
     clearIntervals(timerId)
-    return '0'.padStart(2, '0')
+    return STRING_ZERO.padStart(2, STRING_ZERO)
   }
   if (seconds / HOUR_SECONDS >= 1) {
-    return Math.floor(seconds / 60 / 60)
+    const hourString = Math.floor(seconds / 60 / 60).toString()
+    return hourString.padStart(2, STRING_ZERO)
   } else {
-    return '0'.padStart(2, '0')
+    return STRING_ZERO.padStart(2, STRING_ZERO)
   }
 }
 
@@ -17,11 +18,8 @@ export const getMinutes = seconds => {
   if (seconds / 60 >= 60) {
     seconds = resetLocalSeconds(seconds)
   }
-  if (seconds / 60 >= 1) {
-    return Math.floor(seconds / 60)
-  } else {
-    return '0'.padStart(2, '0')
-  }
+  const minString = Math.floor(seconds / 60).toString()
+  return minString.padStart(2, STRING_ZERO)
 }
 
 const resetLocalSeconds = seconds => {
@@ -32,6 +30,6 @@ export const getSeconds = seconds => {
   const sec = seconds % 60
   const secString = sec.toString()
   const displaySeconds =
-    secString.length <= 1 ? secString.padStart(2, '0') : sec
+    secString.length <= 1 ? secString.padStart(2, STRING_ZERO) : sec
   return displaySeconds
 }
