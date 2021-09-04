@@ -10,6 +10,7 @@ const Buttons = () => {
     sitTimerId,
     standTimerId,
     standTime,
+    sitTime,
     current,
     setSitTime,
     setStandTime,
@@ -20,6 +21,10 @@ const Buttons = () => {
     setStandGap,
     startTime,
     setStartTime,
+    sitGap,
+    setSitGap,
+    startSitTime,
+    setStartSitTime,
   } = useTimerContext()
 
   useEffect(() => {
@@ -34,16 +39,49 @@ const Buttons = () => {
       startTime,
       standGap,
       setStandGap,
+      startSitTime,
+      sitGap,
+      setSitGap,
     })
     if (current) {
       handleTimer(getPayload(current))
     }
+    return () => {
+      clearTimeout(standTimerId)
+    }
   }, [startTime])
 
   useEffect(() => {
-    setStartTime(Date.now())
-    setStandGap(standTime)
-  }, [current, setStandGap])
+    const getPayload = type => ({
+      sitTimerId,
+      standTimerId,
+      setSitTime,
+      setStandTime,
+      setSitTimerId,
+      setStandTimerId,
+      type,
+      startTime,
+      standGap,
+      setStandGap,
+      startSitTime,
+      sitGap,
+      setSitGap,
+    })
+    if (current) {
+      handleTimer(getPayload(current))
+    }
+  }, [startSitTime])
+
+  useEffect(() => {
+    if (current !== 'sit') {
+      setStartTime(Date.now())
+      setStandGap(standTime)
+    }
+    if (current !== 'stand') {
+      setStartSitTime(Date.now())
+      setSitGap(sitTime)
+    }
+  }, [current, setStandGap, setSitGap])
 
   return (
     <div className={buttons}>

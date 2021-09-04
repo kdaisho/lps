@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from 'react'
+import { createContext, useContext, useEffect, useState } from 'react'
 
 const TimerContext = createContext(0)
 
@@ -12,6 +12,16 @@ const TimerWrapper = ({ children }) => {
   const [current, setCurrent] = useState('')
   const [standGap, setStandGap] = useState(0)
   const [startTime, setStartTime] = useState(0)
+  const [sitGap, setSitGap] = useState(0)
+  const [startSitTime, setStartSitTime] = useState(0)
+
+  useEffect(() => {
+    console.log('stand timer id', standTimerId)
+  }, [standTimerId])
+
+  useEffect(() => {
+    console.log('sit timer id', sitTimerId)
+  }, [sitTimerId])
 
   const time = {
     sitTime,
@@ -28,6 +38,10 @@ const TimerWrapper = ({ children }) => {
     setStandGap,
     startTime,
     setStartTime,
+    sitGap,
+    setSitGap,
+    startSitTime,
+    setStartSitTime,
   }
 
   return <TimerContext.Provider value={time}>{children}</TimerContext.Provider>

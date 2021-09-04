@@ -9,6 +9,12 @@ const setTotalSeconds = (start, setter, standGap) => {
   setter(totalSeconds + standGap)
 }
 
+// TODO: create a generic function
+const setTotalSitSeconds = (start, setter, sitGap) => {
+  const totalSeconds = Math.floor((Date.now() - start) / 1000)
+  setter(totalSeconds + sitGap)
+}
+
 const handleTimer = ({
   setStandTime,
   setSitTime,
@@ -19,6 +25,8 @@ const handleTimer = ({
   type,
   startTime,
   standGap,
+  startSitTime,
+  sitGap,
 }) => {
   switch (true) {
     case type === CURRENT.STAND: {
@@ -30,7 +38,10 @@ const handleTimer = ({
       break
     }
     case type === CURRENT.SIT: {
-      const id = setInterval(() => updateTime(setSitTime), ONE_SECOND)
+      const id = setInterval(
+        () => setTotalSitSeconds(startSitTime, setSitTime, sitGap),
+        ONE_SECOND
+      )
       setSitTimerId(id)
       break
     }

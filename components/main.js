@@ -42,7 +42,6 @@ const Main = () => {
       default:
     }
   }, [current])
-
   return (
     <section className={container}>
       <div className={mainContents}>
