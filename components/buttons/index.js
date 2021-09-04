@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react'
 import { button, buttons, isPause, isReset } from 'styles/Buttons.module.scss'
 import { CURRENT } from 'components/constants'
-import { clearIntervals } from 'components/utils'
 import cn from 'classnames'
 import { handleTimer } from './utils'
 import { useTimerContext } from 'components/timerContext'
@@ -20,40 +19,20 @@ const Buttons = () => {
     setTime,
   } = useTimerContext()
 
-  useEffect(() => {
-    const getPayload = type => ({
-      time,
-      setTime,
-      timerId,
-      setTimerId,
-      type,
-      startTime,
-      offset,
-      setOffset,
-    })
-    if (current) {
-      handleTimer(getPayload(current))
-    }
-    return () => {
-      clearIntervals(timerId)
-    }
-  }, [startTime.stand])
+  const getPayload = type => ({
+    time,
+    setTime,
+    timerId,
+    setTimerId,
+    type,
+    startTime,
+    offset,
+    setOffset,
+  })
 
   useEffect(() => {
-    const getPayload = type => ({
-      time,
-      setTime,
-      timerId,
-      setTimerId,
-      type,
-      startTime,
-      offset,
-      setOffset,
-    })
-    if (current) {
-      handleTimer(getPayload(current))
-    }
-  }, [startTime.sit])
+    handleTimer(getPayload(current))
+  }, [startTime])
 
   useEffect(() => {
     if (current !== CURRENT.SIT) {
