@@ -16,10 +16,8 @@ const setTotalSitSeconds = (start, time, setter, sitOffset) => {
 const handleTimer = ({
   time,
   setTime,
-  setSitTimerId,
-  sitTimerId,
-  setStandTimerId,
-  standTimerId,
+  timerId,
+  setTimerId,
   type,
   startTime,
   startSitTime,
@@ -31,26 +29,25 @@ const handleTimer = ({
         () => setTotalSeconds(startTime, time, setTime, offset.stand),
         ONE_SECOND
       )
-      setStandTimerId(id)
+      setTimerId({ stand: id, sit: timerId.sit })
       break
     }
     case type === CURRENT.SIT: {
-      console.log('offset sit', offset)
       const id = setInterval(
         () => setTotalSitSeconds(startSitTime, time, setTime, offset.sit),
         ONE_SECOND
       )
-      setSitTimerId(id)
+      setTimerId({ stand: timerId.stand, sit: id })
       break
     }
     case type === CURRENT.PAUSE: {
-      clearInterval(sitTimerId)
-      clearInterval(standTimerId)
+      clearInterval(timerId.stand)
+      clearInterval(timerId.sit)
       break
     }
     case type === CURRENT.RESET: {
-      clearInterval(sitTimerId)
-      clearInterval(standTimerId)
+      clearInterval(timerId.stand)
+      clearInterval(timerId.sit)
       setTime({
         sit: 0,
         stand: 0,

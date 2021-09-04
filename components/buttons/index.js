@@ -7,11 +7,9 @@ import { useTimerContext } from 'components/timerContext'
 
 const Buttons = () => {
   const {
-    sitTimerId,
-    standTimerId,
     current,
-    setSitTimerId,
-    setStandTimerId,
+    timerId,
+    setTimerId,
     setCurrent,
     startTime,
     setStartTime,
@@ -25,12 +23,10 @@ const Buttons = () => {
 
   useEffect(() => {
     const getPayload = type => ({
-      sitTimerId,
-      standTimerId,
       time,
       setTime,
-      setSitTimerId,
-      setStandTimerId,
+      timerId,
+      setTimerId,
       type,
       startTime,
       startSitTime,
@@ -41,18 +37,17 @@ const Buttons = () => {
       handleTimer(getPayload(current))
     }
     return () => {
-      clearTimeout(standTimerId)
+      clearTimeout(timerId.stand)
+      clearTimeout(timerId.sit)
     }
   }, [startTime])
 
   useEffect(() => {
     const getPayload = type => ({
-      sitTimerId,
-      standTimerId,
       time,
       setTime,
-      setSitTimerId,
-      setStandTimerId,
+      timerId,
+      setTimerId,
       type,
       startTime,
       startSitTime,
@@ -83,7 +78,7 @@ const Buttons = () => {
           size='large'
           onClick={() => {
             setCurrent(CURRENT.STAND)
-            clearInterval(sitTimerId)
+            clearInterval(timerId.sit)
           }}
         >
           Stand
@@ -93,7 +88,7 @@ const Buttons = () => {
           size='large'
           onClick={() => {
             setCurrent(CURRENT.SIT)
-            clearInterval(standTimerId)
+            clearInterval(timerId.stand)
           }}
         >
           Sit

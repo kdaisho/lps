@@ -5,11 +5,11 @@ import { timer } from 'styles/TimerDisplay.module.scss'
 import { useTimerContext } from 'components/timerContext'
 
 const TimerDisplay = ({ seconds, mainTimer }) => {
-  const { sitTimerId, standTimerId } = useTimerContext()
+  const { timerId } = useTimerContext()
 
   const getTime = seconds => {
     return {
-      h: getHours(seconds, sitTimerId, standTimerId),
+      h: getHours(seconds, timerId),
       m: getMinutes(seconds),
       s: getSeconds(seconds),
     }
