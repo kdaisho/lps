@@ -5,8 +5,6 @@ const TimerContext = createContext(0)
 const TimerWrapper = ({ children }) => {
   // 1DAY: 86400 sec
   // 1HOUR: 3600 sec
-  const [sitTime, setSitTime] = useState(0)
-  const [standTime, setStandTime] = useState(0)
   const [sitTimerId, setSitTimerId] = useState(0)
   const [standTimerId, setStandTimerId] = useState(0)
   const [current, setCurrent] = useState('')
@@ -14,6 +12,11 @@ const TimerWrapper = ({ children }) => {
   const [startTime, setStartTime] = useState(0)
   const [sitGap, setSitGap] = useState(0)
   const [startSitTime, setStartSitTime] = useState(0)
+
+  const [time, setTime] = useState({
+    stand: 0,
+    sit: 0,
+  })
 
   useEffect(() => {
     console.log('stand timer id', standTimerId)
@@ -23,14 +26,10 @@ const TimerWrapper = ({ children }) => {
     console.log('sit timer id', sitTimerId)
   }, [sitTimerId])
 
-  const time = {
-    sitTime,
-    standTime,
+  const timeContext = {
     sitTimerId,
     standTimerId,
     current,
-    setSitTime,
-    setStandTime,
     setSitTimerId,
     setStandTimerId,
     setCurrent,
@@ -42,9 +41,16 @@ const TimerWrapper = ({ children }) => {
     setSitGap,
     startSitTime,
     setStartSitTime,
+
+    time,
+    setTime,
   }
 
-  return <TimerContext.Provider value={time}>{children}</TimerContext.Provider>
+  return (
+    <TimerContext.Provider value={timeContext}>
+      {children}
+    </TimerContext.Provider>
+  )
 }
 
 const useTimerContext = () => {

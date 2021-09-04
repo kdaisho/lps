@@ -12,8 +12,8 @@ import { useTimerContext } from 'components/timerContext'
 
 const Main = () => {
   const [currentState, setCurrentState] = useState('ready')
-  const { current, sitTime, standTime } = useTimerContext()
-  let seconds = current === CURRENT.SIT ? sitTime : standTime
+  const { current, time } = useTimerContext()
+  let seconds = current === CURRENT.SIT ? time.sit : time.stand
   const prevTimeRef = useRef()
   const prevTime = prevTimeRef.current
 

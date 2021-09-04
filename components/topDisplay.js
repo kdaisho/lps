@@ -5,17 +5,17 @@ import cn from 'classnames'
 import { useTimerContext } from 'components/timerContext'
 
 const TopDisplay = ({ right }) => {
-  const { sitTime, standTime } = useTimerContext()
+  const { time } = useTimerContext()
 
   return (
     <div className={cn(container, right, 'inner-padding')}>
       <div className={timer}>
-        <h2 title='standing'>🧍</h2>
-        <TimerDisplay seconds={standTime} />
+        <h2 title='standing'>🏃</h2>
+        <TimerDisplay seconds={time.stand} />
       </div>
       <div className={timer}>
-        <h2 title='sitting'>🪑</h2>
-        <TimerDisplay seconds={sitTime} />
+        <h2 title='sitting'>💺</h2>
+        <TimerDisplay seconds={time.sit} />
       </div>
     </div>
   )
