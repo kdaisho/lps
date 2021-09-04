@@ -15,10 +15,6 @@ const TimerWrapper = ({ children }) => {
   const [startTime, setStartTime] = useState(initialTimerState)
   const [time, setTime] = useState(initialTimerState)
 
-  useEffect(() => {
-    console.log('timerId', timerId)
-  }, [timerId])
-
   const timeContext = {
     current,
     timerId,
