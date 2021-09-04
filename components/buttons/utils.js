@@ -1,4 +1,5 @@
 import { CURRENT, ONE_SECOND } from 'components/constants'
+import { clearIntervals } from 'components/utils'
 
 const toSeconds = ms => Math.floor((Date.now() - ms) / 1000)
 
@@ -33,13 +34,11 @@ export const handleTimer = ({
       break
     }
     case type === CURRENT.PAUSE: {
-      clearInterval(timerId.stand)
-      clearInterval(timerId.sit)
+      clearIntervals(timerId)
       break
     }
     case type === CURRENT.RESET: {
-      clearInterval(timerId.stand)
-      clearInterval(timerId.sit)
+      clearIntervals(timerId)
       setTime({
         sit: 0,
         stand: 0,

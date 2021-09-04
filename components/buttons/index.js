@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { button, buttons, isPause, isReset } from 'styles/Buttons.module.scss'
 import { CURRENT } from 'components/constants'
+import { clearIntervals } from 'components/utils'
 import cn from 'classnames'
 import { handleTimer } from './utils'
 import { useTimerContext } from 'components/timerContext'
@@ -34,8 +35,7 @@ const Buttons = () => {
       handleTimer(getPayload(current))
     }
     return () => {
-      clearTimeout(timerId.stand)
-      clearTimeout(timerId.sit)
+      clearIntervals(timerId)
     }
   }, [startTime.stand])
 
@@ -71,7 +71,6 @@ const Buttons = () => {
       <div>
         <button
           className={button}
-          size='large'
           onClick={() => {
             setCurrent(CURRENT.STAND)
             clearInterval(timerId.sit)
@@ -81,7 +80,6 @@ const Buttons = () => {
         </button>
         <button
           className={button}
-          size='large'
           onClick={() => {
             setCurrent(CURRENT.SIT)
             clearInterval(timerId.stand)
@@ -93,14 +91,12 @@ const Buttons = () => {
       <div>
         <button
           className={cn(button, isPause)}
-          size='large'
           onClick={() => setCurrent(CURRENT.PAUSE)}
         >
           Pause
         </button>
         <button
           className={cn(button, isReset)}
-          size='large'
           onClick={() => setCurrent(CURRENT.RESET)}
         >
           Reset
