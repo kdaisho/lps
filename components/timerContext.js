@@ -11,9 +11,8 @@ const TimerWrapper = ({ children }) => {
   }
   const [timerId, setTimerId] = useState(initialTimerState)
   const [current, setCurrent] = useState('')
-  const [startTime, setStartTime] = useState(0)
   const [offset, setOffset] = useState(initialTimerState)
-  const [startSitTime, setStartSitTime] = useState(0)
+  const [startTime, setStartTime] = useState(initialTimerState)
   const [time, setTime] = useState(initialTimerState)
 
   useEffect(() => {
@@ -29,8 +28,6 @@ const TimerWrapper = ({ children }) => {
     setStartTime,
     offset,
     setOffset,
-    startSitTime,
-    setStartSitTime,
     time,
     setTime,
   }

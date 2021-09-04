@@ -11,12 +11,10 @@ const Buttons = () => {
     timerId,
     setTimerId,
     setCurrent,
-    startTime,
-    setStartTime,
     offset,
     setOffset,
-    startSitTime,
-    setStartSitTime,
+    startTime,
+    setStartTime,
     time,
     setTime,
   } = useTimerContext()
@@ -29,7 +27,6 @@ const Buttons = () => {
       setTimerId,
       type,
       startTime,
-      startSitTime,
       offset,
       setOffset,
     })
@@ -40,7 +37,7 @@ const Buttons = () => {
       clearTimeout(timerId.stand)
       clearTimeout(timerId.sit)
     }
-  }, [startTime])
+  }, [startTime.stand])
 
   useEffect(() => {
     const getPayload = type => ({
@@ -50,22 +47,21 @@ const Buttons = () => {
       setTimerId,
       type,
       startTime,
-      startSitTime,
       offset,
       setOffset,
     })
     if (current) {
       handleTimer(getPayload(current))
     }
-  }, [startSitTime])
+  }, [startTime.sit])
 
   useEffect(() => {
-    if (current !== 'sit') {
-      setStartTime(Date.now())
+    if (current !== CURRENT.SIT) {
+      setStartTime({ stand: Date.now(), sit: startTime.sit })
       setOffset({ stand: time.stand, sit: offset.sit })
     }
-    if (current !== 'stand') {
-      setStartSitTime(Date.now())
+    if (current !== CURRENT.STAND) {
+      setStartTime({ stand: startTime.stand, sit: Date.now() })
       setOffset({ stand: offset.stand, sit: time.sit })
     }
   }, [current, setOffset])

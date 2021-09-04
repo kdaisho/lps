@@ -20,13 +20,12 @@ const handleTimer = ({
   setTimerId,
   type,
   startTime,
-  startSitTime,
   offset,
 }) => {
   switch (true) {
     case type === CURRENT.STAND: {
       const id = setInterval(
-        () => setTotalSeconds(startTime, time, setTime, offset.stand),
+        () => setTotalSeconds(startTime.stand, time, setTime, offset.stand),
         ONE_SECOND
       )
       setTimerId({ stand: id, sit: timerId.sit })
@@ -34,7 +33,7 @@ const handleTimer = ({
     }
     case type === CURRENT.SIT: {
       const id = setInterval(
-        () => setTotalSitSeconds(startSitTime, time, setTime, offset.sit),
+        () => setTotalSitSeconds(startTime.sit, time, setTime, offset.sit),
         ONE_SECOND
       )
       setTimerId({ stand: timerId.stand, sit: id })
