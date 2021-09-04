@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { button, buttons, isPause, isReset } from 'styles/Buttons.module.scss'
 import { CURRENT } from 'components/constants'
 import cn from 'classnames'
-import handleTimer from './utils'
+import { handleTimer } from './utils'
 import { useTimerContext } from 'components/timerContext'
 
 const Buttons = () => {
