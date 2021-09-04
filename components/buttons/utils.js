@@ -1,19 +1,15 @@
 import { CURRENT, ONE_SECOND } from 'components/constants'
 
-const updateTime = setter => {
-  setter(sec => sec + 1)
-}
-
-const setTotalSeconds = (start, time, setter, standGap) => {
+const setTotalSeconds = (start, time, setter, standOffset) => {
   const totalSeconds = Math.floor((Date.now() - start) / 1000)
-  const offsetTime = totalSeconds + standGap
+  const offsetTime = totalSeconds + standOffset
   setter({ stand: offsetTime, sit: time.sit })
 }
 
 // TODO: create a generic function
-const setTotalSitSeconds = (start, time, setter, sitGap) => {
+const setTotalSitSeconds = (start, time, setter, sitOffset) => {
   const totalSeconds = Math.floor((Date.now() - start) / 1000)
-  const offsetTime = totalSeconds + sitGap
+  const offsetTime = totalSeconds + sitOffset
   setter({ stand: time.stand, sit: offsetTime })
 }
 
@@ -26,22 +22,22 @@ const handleTimer = ({
   standTimerId,
   type,
   startTime,
-  standGap,
   startSitTime,
-  sitGap,
+  offset,
 }) => {
   switch (true) {
     case type === CURRENT.STAND: {
       const id = setInterval(
-        () => setTotalSeconds(startTime, time, setTime, standGap),
+        () => setTotalSeconds(startTime, time, setTime, offset.stand),
         ONE_SECOND
       )
       setStandTimerId(id)
       break
     }
     case type === CURRENT.SIT: {
+      console.log('offset sit', offset)
       const id = setInterval(
-        () => setTotalSitSeconds(startSitTime, time, setTime, sitGap),
+        () => setTotalSitSeconds(startSitTime, time, setTime, offset.sit),
         ONE_SECOND
       )
       setSitTimerId(id)

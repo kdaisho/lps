@@ -5,18 +5,17 @@ const TimerContext = createContext(0)
 const TimerWrapper = ({ children }) => {
   // 1DAY: 86400 sec
   // 1HOUR: 3600 sec
+  const initialTimeState = {
+    stand: 0,
+    sit: 0,
+  }
   const [sitTimerId, setSitTimerId] = useState(0)
   const [standTimerId, setStandTimerId] = useState(0)
   const [current, setCurrent] = useState('')
-  const [standGap, setStandGap] = useState(0)
   const [startTime, setStartTime] = useState(0)
-  const [sitGap, setSitGap] = useState(0)
+  const [offset, setOffset] = useState(initialTimeState)
   const [startSitTime, setStartSitTime] = useState(0)
-
-  const [time, setTime] = useState({
-    stand: 0,
-    sit: 0,
-  })
+  const [time, setTime] = useState(initialTimeState)
 
   useEffect(() => {
     console.log('stand timer id', standTimerId)
@@ -33,15 +32,12 @@ const TimerWrapper = ({ children }) => {
     setSitTimerId,
     setStandTimerId,
     setCurrent,
-    standGap,
-    setStandGap,
     startTime,
     setStartTime,
-    sitGap,
-    setSitGap,
+    offset,
+    setOffset,
     startSitTime,
     setStartSitTime,
-
     time,
     setTime,
   }
