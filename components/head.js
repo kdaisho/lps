@@ -9,7 +9,7 @@ const Head = () => {
         name='description'
         content='Time management app for standing desk users'
       />
-      <link rel='icon' href='/favicon.ico' />
+      <link rel='icon' href='/favicon.png' />
     </AppHead>
   )
 }

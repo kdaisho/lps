@@ -10,7 +10,7 @@ const Header = () => {
         <div className={left}>
           <img
             className='logo'
-            src='https://lps-images.s3.amazonaws.com/lps-logo.png'
+            src='https://res.cloudinary.com/de9x7yfyb/image/upload/v1638852581/lps/lps-logo-opt_ocuocy.webp'
             alt='standing cowcat'
             width='175'
             height='175'
