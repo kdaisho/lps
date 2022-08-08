@@ -28,7 +28,7 @@ const Main = () => {
   useEffect(() => {
     switch (true) {
       case current === CURRENT.RESET:
-        setCurrentState('bye')
+        setCurrentState('bye!')
         break
       case current === CURRENT.SIT:
         setCurrentState(CURRENT.SIT)
